@@ -1,0 +1,5 @@
+require("Storage").write("snake.info",{
+  "id":"snake",
+  "name":"Snake",
+  "src":"snake.js"
+});

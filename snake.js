@@ -1,3 +1,4 @@
+{
 const WIDTH = 20
 const HEIGHT = 20
 const SIZE = 8
@@ -102,17 +103,18 @@ class Game {
     }
   }
   draw(){
+    Bangle.setLCDPower(0.8);
     g.reset().clearRect(Bangle.appRect);
     for(let y=0;y<this.height;y++){
       for(let x=0;x<this.width;x++){
           const _x = x * SIZE
           const _y = y * SIZE
           if(this.snake.bits.find(bit=>bit[0]==x&&bit[1]==y)){
-            g.setColor(0.0,0.0,0.0);
+            g.setColor(1.0,0.0,0.0);
             g.fillRect(_x,_y,_x+SIZE,_y+SIZE);
           }
           else if(this.apple[0]==x&&this.apple[1]==y){
-            g.setColor(0.0,0.0,0.0);
+            g.setColor(1.0,0.0,0.0);
             g.fillRect(_x,_y,_x+SIZE,_y+SIZE);
           }
       }
@@ -130,7 +132,6 @@ const start = () => {
   inited = true
   const game = new Game()
   game.init();
-  //document.addEventListener('keydown', e => game.listen(e.key))
   Bangle.on('swipe', function(directionLR, directionUD) {
     if(directionLR!=0){
       game.listen(directionLR<0?'ArrowLeft':'ArrowRight');
@@ -141,7 +142,8 @@ const start = () => {
   });
   setInterval(() => {
     game.tick();
-  }, 150);
+  }, 100);
 }
 
 start()
+}
