@@ -105,20 +105,18 @@ class Game {
   draw(){
     Bangle.setLCDPower(0.8);
     g.reset().clearRect(Bangle.appRect);
-    for(let y=0;y<this.height;y++){
-      for(let x=0;x<this.width;x++){
-          const _x = x * SIZE
-          const _y = y * SIZE
-          if(this.snake.bits.find(bit=>bit[0]==x&&bit[1]==y)){
-            g.setColor(1.0,0.0,0.0);
-            g.fillRect(_x,_y,_x+SIZE,_y+SIZE);
-          }
-          else if(this.apple[0]==x&&this.apple[1]==y){
-            g.setColor(1.0,0.0,0.0);
-            g.fillRect(_x,_y,_x+SIZE,_y+SIZE);
-          }
+    this.snake.bits.forEach(
+      bit => {
+        const x = bit[0]*SIZE
+        const y = bit[1]*SIZE
+        g.setColor(1.0,0.0,0.0);
+        g.fillRect(x,y,x+SIZE,y+SIZE);
       }
-    }
+    )
+    const x = this.apple[0]*SIZE
+    const y = this.apple[1]*SIZE
+    g.setColor(1.0,0.0,0.0);
+    g.fillRect(x,y,x+SIZE,y+SIZE);
     //console.log(`%c${arr.join('\n')}`,"background-color: green; color: red; font-weight: bold; padding: 4px; line-height: 0.6;")
     console.log(`points: ${this.points}\thighscore: ${this.highscore}`)
   }
