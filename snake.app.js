@@ -16,7 +16,7 @@ class Game {
     this.init()
   }
   init(){
-    this.snake={bits:[[11,6],[10,6],[9,6]],direction:'r'}
+    this.snake={bits:[[11,6],[10,6],[9,6],[8,6]],direction:'r'}
     this.moveApple()
     this.points=0
     this.frame=0
@@ -105,7 +105,8 @@ class Game {
   draw(){
     Bangle.setLCDPower(0.8);
     g.reset().clearRect(Bangle.appRect);
-    g.setColor(1.0,1.0,1.0);
+    g.setBgColor(g.theme.bg);
+    g.setColor(g.theme.fg);
     g.drawRect(0,0,WIDTH*SIZE,HEIGHT*SIZE)
     this.snake.bits.forEach(
       bit => {
@@ -119,6 +120,7 @@ class Game {
     const y = this.apple[1]*SIZE
     g.setColor(1.0,0.0,0.0);
     g.fillRect(x,y,x+SIZE,y+SIZE);
+    g.setColor(g.theme.fg);
     g.drawString(`points: ${this.points}\thighscore: ${this.highscore}`, 0, 176-10, true /*clear background*/);
   }
   pause(){this.paused=true}
