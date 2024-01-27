@@ -140,7 +140,7 @@ const start = () => {
   });
   setInterval(() => {
     game.tick();
-  }, 100);
+  }, 200);
 }
 
 start()
