@@ -105,6 +105,8 @@ class Game {
   draw(){
     Bangle.setLCDPower(0.8);
     g.reset().clearRect(Bangle.appRect);
+    g.setColor(1.0,1.0,1.0);
+    g.drawRect(0,0,WIDTH*SIZE,HEIGHT*SIZE)
     this.snake.bits.forEach(
       bit => {
         const x = bit[0]*SIZE
