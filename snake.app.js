@@ -1,7 +1,7 @@
 {
-const WIDTH = 20
-const HEIGHT = 20
-const SIZE = 8
+const WIDTH = 14
+const HEIGHT = 12
+const SIZE = 12
 
 class Game {
   constructor(){
@@ -111,7 +111,7 @@ class Game {
       bit => {
         const x = bit[0]*SIZE
         const y = bit[1]*SIZE
-        g.setColor(1.0,0.0,0.0);
+        g.setColor(0.0,0.7,0.0);
         g.fillRect(x,y,x+SIZE,y+SIZE);
       }
     )
@@ -141,7 +141,7 @@ const start = () => {
   });
   setInterval(() => {
     game.tick();
-  }, 200);
+  }, 250);
 }
 
 start()
