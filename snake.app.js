@@ -117,8 +117,7 @@ class Game {
     const y = this.apple[1]*SIZE
     g.setColor(1.0,0.0,0.0);
     g.fillRect(x,y,x+SIZE,y+SIZE);
-    //console.log(`%c${arr.join('\n')}`,"background-color: green; color: red; font-weight: bold; padding: 4px; line-height: 0.6;")
-    console.log(`points: ${this.points}\thighscore: ${this.highscore}`)
+    g.drawString(`points: ${this.points}\thighscore: ${this.highscore}`, 0, 176-10, true /*clear background*/);
   }
   pause(){this.paused=true}
   unpause(){this.paused=false}
