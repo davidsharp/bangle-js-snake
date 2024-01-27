@@ -2,6 +2,8 @@
 const WIDTH = 14
 const HEIGHT = 12
 const SIZE = 12
+const X_OFFSET = (174 - (WIDTH*SIZE))/2
+const Y_OFFSET = 10
 
 class Game {
   constructor(){
@@ -107,21 +109,21 @@ class Game {
     g.reset().clearRect(Bangle.appRect);
     g.setBgColor(g.theme.bg);
     g.setColor(g.theme.fg);
-    g.drawRect(0,0,WIDTH*SIZE,HEIGHT*SIZE)
+    g.drawRect(X_OFFSET,Y_OFFSET,X_OFFSET+(WIDTH*SIZE),Y_OFFSET+(HEIGHT*SIZE))
     this.snake.bits.forEach(
       bit => {
-        const x = bit[0]*SIZE
-        const y = bit[1]*SIZE
+        const x = X_OFFSET+(bit[0]*SIZE)
+        const y = Y_OFFSET+(bit[1]*SIZE)
         g.setColor(0.0,0.7,0.0);
         g.fillRect(x,y,x+SIZE,y+SIZE);
       }
     )
-    const x = this.apple[0]*SIZE
-    const y = this.apple[1]*SIZE
+    const x = X_OFFSET+(this.apple[0]*SIZE)
+    const y = Y_OFFSET+(this.apple[1]*SIZE)
     g.setColor(1.0,0.0,0.0);
     g.fillRect(x,y,x+SIZE,y+SIZE);
     g.setColor(g.theme.fg);
-    g.drawString(`points: ${this.points}\thighscore: ${this.highscore}`, 0, 176-10, true /*clear background*/);
+    g.drawString(`points: ${this.points}\thighscore: ${this.highscore}`, 5, 176-15, true /*clear background*/);
   }
   pause(){this.paused=true}
   unpause(){this.paused=false}
